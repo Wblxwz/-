@@ -401,6 +401,34 @@
 - ##### git reset **< file>**
 
   - 取消git add操作，即仅仅将HEAD这颗树的内容复制到Index树的内容中
+  - 注意重点要先pull下来，做一个祖先HEAD下来方便撤销
+
+- ##### git revert -m 1 HEAD
+
+  - 撤销更改，-m 1 指出需要保留1号父结点
+  - ![在 `git revert -m 1` 后的历史](https://git-scm.com/book/en/v2/images/undomerge-revert.png)
+  - 比如不小心合并了topic到master，但并不想要这次合并，于是选择撤销
+  - 也可以使用git reset --hard，但是git reset --hard的缺点是它会重写历史，在一个共享的仓库中会造成问题
+
+- [Git - Rerere (git-scm.com)](https://git-scm.com/book/zh/v2/Git-工具-Rerere)
+
+- ##### git blame < file>
+
+  - 查看该文件的每一行对应的提交和提交者，方便排查错误何时引入的
+  - 检测bug的话还是建议打log
+
+- [Git - 子模块 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-工具-子模块)
+
+- [Git - 打包 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-工具-打包)
+
+- [Git - 替换 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-工具-替换)
+
+- [Git - 凭证存储 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-工具-凭证存储)
+
+- [Git - Git 钩子 (git-scm.com)](https://git-scm.com/book/zh/v2/自定义-Git-Git-钩子)
+
+  - hooks即在特点操作后触发的自定义脚本，存放在.git/hooks(windows下是\\)
+
+- [Git - 使用强制策略的一个例子 (git-scm.com)](https://git-scm.com/book/zh/v2/自定义-Git-使用强制策略的一个例子)
 
 - 
-
