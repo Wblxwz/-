@@ -431,4 +431,60 @@
 
 - [Git - 使用强制策略的一个例子 (git-scm.com)](https://git-scm.com/book/zh/v2/自定义-Git-使用强制策略的一个例子)
 
-- 
+- ##### Git所需的所有内容都在.git文件夹中
+
+  - 通过git init创建，可以复制该文件夹获取版本库
+
+- ##### Git数据对象
+
+  - .git目录中的object存放所有数据，key为hash校验和 value为数据，可以通过key随时存取数据。
+  - 目录中的文件夹命名取hash值的前两位，hash值剩下的内容赋值给文件名
+
+- ##### Git树对象
+
+  - Git利用树结构存储数据对象，树的结点也可以是树
+  - ![简化版的 Git 数据模型。](https://git-scm.com/book/en/v2/images/data-model-1.png)
+
+- ##### 提交对象
+
+  - 即commit对象
+
+- ##### Git底层原理
+
+  - 每次我们运行 `git add` 和 `git commit` 命令时，Git 所做的工作实质就是将被改写的文件保存为数据对象， 更新暂存区，记录树对象，最后创建一个指明了顶层树对象和父提交的提交对象。 这三种主要的 Git 对象——数据对象、树对象、提交对象——最初均以单独文件的形式保存在 `.git/objects` 目录下。
+
+  - 主要就是commit对象、tree对象、blob对象，Git使用zlib压缩文件使其大小不会太大
+
+- ##### Git引用
+
+  - 由于hash值不好记，对hash值做引用，在.git/refs目录下，包括对分支的引用文件夹，远程引用文件夹，和tags相关内容的文件夹
+
+  - HEAD文件通常是符号引用，指向目前所在的分支，比如指向checkout所检出的分支
+
+  - 所有引用都是对hash值做记录
+
+  - 远程引用是只读的，本地HEAD不会指向远端仓库的分支
+
+- ##### Git包文件
+
+  - 即使同一个文件只有细微的改动，git也会存储一个全新的数据对象文件
+
+  - 当版本库中有太多这样类似的文件或使用git gc或push时，Git会将其打包成包文件，以节省空间和提升效率，即只完整保存其中一个，再保存另一个对象与之前版本的差异内容，类似快照。
+
+  - Git 打包对象时，会查找命名及大小相近的文件，并只保存文件不同版本之间的差异内容
+
+- ##### Git传输
+
+  - 客户端和服务端各自拥有负责上传和下载的进程
+
+- ##### [Git - 维护与数据恢复 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-内部原理-维护与数据恢复)
+
+- ##### [Git - 环境变量 (git-scm.com)](https://git-scm.com/book/zh/v2/Git-内部原理-环境变量)
+
+- ##### [Git - 设置与配置 (git-scm.com)](https://git-scm.com/book/zh/v2/附录-C%3A-Git-命令-设置与配置)
+
+  - 所有指令合集
+
+- ##### 源码镜像
+
+  - ##### [git/git: Git Source Code Mirror - This is a publish-only repository but pull requests can be turned into patches to the mailing list via GitGitGadget (https://gitgitgadget.github.io/). Please follow Documentation/SubmittingPatches procedure for any of your improvements.](https://github.com/git/git)
